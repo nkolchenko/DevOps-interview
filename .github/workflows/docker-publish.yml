@@ -13,6 +13,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   #CONTAINER_IMAGE: nodejs-app:${{ github.sha }}
   CONTAINER_IMAGE: nodejs-app:latest
+  KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
 
 jobs:
   build-and-push:
@@ -45,3 +46,9 @@ jobs:
       run: |
         # Push image to AWS ECR
         docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE
+        
+        
+    - name: kubectl stuff
+      uses: actions-hub/kubectl@master
+      with:
+        args: get -A all
