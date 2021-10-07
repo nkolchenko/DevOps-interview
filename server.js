@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
-    res.send('Hello TROLOLO World!');
+    res.send('Hello TROLOLO World!!!!');
     console.log('New request arrived for: ' +req.originalUrl )
   })
 
