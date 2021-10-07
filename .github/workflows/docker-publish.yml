@@ -38,8 +38,9 @@ jobs:
           -t $CONTAINER_IMAGE \
           -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE .
  
-
-    # Only push to registry on master
+    # Add additional steps here like scanning of image
+    
+    # Only push to registry on main
     - name: Push
       if: github.ref == 'refs/heads/main'
       run: |
