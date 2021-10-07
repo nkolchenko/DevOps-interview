@@ -26,7 +26,7 @@ spec:
     spec:
       automountServiceAccountToken: true
       containers:
-      - image:  496212753419.dkr.ecr.eu-central-1.amazonaws.com/nodejs-app # pushed there by GitHub Actions
+      - image:  496212753419.dkr.ecr.eu-central-1.amazonaws.com/nodejs-app:latest # pushed there by GitHub Actions
         imagePullPolicy: Always
         name: nodejs-app-container
         ports:
