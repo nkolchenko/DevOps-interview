@@ -29,35 +29,23 @@ jobs:
     - name: Setup ECR
       run: |
         # Login to AWS ECR
-    ###    aws ecr get-login-password | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+        aws ecr get-login-password | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
         
     - name: Build and tag the image
       run: |
         # Build and tag the image
-   ###     docker build \
-   ###       -t $CONTAINER_IMAGE \
-   ###       -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE .
-           
-    # Add additional steps here like scanning of image
+        docker build \
+          -t $CONTAINER_IMAGE \
+          -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE .
+ 
 
     # Only push to registry on master
     - name: Push
       if: github.ref == 'refs/heads/main'
       run: |
         # Push image to AWS ECR
-   ###     docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE
+        docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE
         
-    - name: install
-      uses: prepor/action-aws-iam-authenticator@master
-      with: 
-        command: version
-     
-    - name: deploy to cluster
-    
-      uses: steebchen/kubectl@v2.0.0
-      with: # defaults to latest kubectl binary version
-        config: ${{ secrets.KUBE_CONFIG }}
-        command: get ns
-
+  
 
 
