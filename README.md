@@ -50,4 +50,4 @@ asking or expecting you to implement any monitoring, alerting, or that kind of t
 - We are passionate about security. Take note of the parts of your code that need to be handled with care and document 
 them appropriately.
 
-If you run into any issues throughout the process or have questions, please reach out to devops@zenhub.com
+If you run into any issues throughout the process or have questions, please reach out to devops@***.com
